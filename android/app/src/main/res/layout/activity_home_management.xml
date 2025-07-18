@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_color"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    tools:context=".ui.family.HomeManagementActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_home_manager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/container_white_conner_16" />
+
+        <TextView
+            android:id="@+id/tv_create_home"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/container_white_conner_16"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="16dp"
+            android:text="@string/create_home"
+            android:textColor="#1EAAFD"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_join_home"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/container_white_conner_16"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="16dp"
+            android:text="@string/join_home"
+            android:textColor="#1EAAFD"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/dp_16"
+            />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

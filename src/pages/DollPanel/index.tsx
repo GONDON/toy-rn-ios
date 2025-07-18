@@ -17,6 +17,7 @@ import {
   ScrollView,
   SafeAreaView,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { DollInstance, getDollInstance } from '../../api';
@@ -32,11 +33,28 @@ const formatDuration = (seconds: number) => {
   return `${hours}h ${minutes}min`;
 };
 
-const DollPanel = () => {
+const DollPanel = (props: any) => {
   const navigation = useNavigation();
   const route = useRoute();
-  // @ts-ignore
-  const { id = 15996 } = route.params || {}; // Default ID for testing
+
+  // 从props或route.params获取数据
+  const dollData = props?.dollData || route.params?.dollData;
+  const id = props?.id || route.params?.id || dollData?.dollModel?.id || 15996;
+
+  // 处理从iOS传递过来的参数
+  useEffect(() => {
+    const params = route.params as any;
+    console.log('🚀 [RN] DollPanel页面加载，路由参数:', params);
+
+    if (params?.dollId) {
+      console.log('🚀 [RN] 从iOS接收到dollId:', params.dollId);
+      // 这里可以根据dollId执行特定逻辑
+    }
+
+    if (params?.source === 'home-page') {
+      console.log('🚀 [RN] 从iOS首页进入DollPanel');
+    }
+  }, [route.params]);
 
   const [dollInfo, setDollInfo] = useState<DollInstance | null>(null);
   const [loading, setLoading] = useState(false);
@@ -343,11 +361,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   statValue: {
-    marginTop:6,
+    marginTop: 6,
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: '600',  // 改为字符串
     color: 'rgba(0, 0, 0, 0.9)'
-    },
+  },
   statLabel: {
     fontSize: 14,
     color: '#333',

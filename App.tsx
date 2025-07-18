@@ -8,8 +8,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Creation from './src/pages/Creation';
@@ -17,42 +16,48 @@ import AddDoll from './src/pages/AddDoll';
 import StoryMachinePanel from './src/pages/StoryMachinePanel';
 import DollPanel from './src/pages/DollPanel';
 
-const RootStack = createNativeStackNavigator({
-  initialRouteName: 'DollPanel',
-  screens: {
-    Home: {
-      screen: Creation,
-      options: {
-        headerShown: false,
-      },
-    },
-    AddDoll: {
-      screen: AddDoll,
-      options: {
-        headerShown: false,
-      },
-    },
-    StoryMachinePanel: {
-      screen: StoryMachinePanel,
-      options: {
-        headerShown: false,
-      },
-    },
-    DollPanel: {
-      screen: DollPanel,
-      options: {
-        headerShown: false,
-      },
-    },
-  },
-});
+const Stack = createNativeStackNavigator();
 
-const Navigation = createStaticNavigation(RootStack);
+export default function App(props: any) {
+  // 从iOS传递过来的初始路由和参数
+  const initialRoute = props.initialRoute || 'DollPanel';
+  const initialParams = props.initialParams || {};
 
-export default function App() {
+  console.log('🚀 [RN] App启动，初始路由:', initialRoute, '参数:', initialParams);
+
   return (
     <SafeAreaProvider>
-      <Navigation />
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={initialRoute}
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen
+            name="Creation"
+            component={Creation}
+            initialParams={initialParams}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Creation}
+            initialParams={initialParams}
+          />
+          <Stack.Screen
+            name="AddDoll"
+            component={AddDoll}
+          />
+          <Stack.Screen
+            name="StoryMachinePanel"
+            component={StoryMachinePanel}
+          />
+          <Stack.Screen
+            name="DollPanel"
+            component={DollPanel}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }

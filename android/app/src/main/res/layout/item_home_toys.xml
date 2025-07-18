@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rl_doll"
+        android:background="@mipmap/home_toys_item_bg">
+
+        <TextView
+            android:id="@+id/tv_diy_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:text="@string/create_buddy"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:background="@drawable/diy_mark_bg"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tv_toy_name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Disney Mick Disn..."
+            android:textColor="#e6000000"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_toy_name"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_toy_bookshelf" />
+
+                <TextView
+                    android:id="@+id/tv_stories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:text="50 Stories"
+                    android:textColor="#80000000"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_toy_time" />
+
+                <TextView
+                    android:id="@+id/tv_toy_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:text="3 hrs 20 mins"
+                    android:textColor="#80000000"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="29dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/item_mark_right"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:padding="12dp"
+            android:src="@mipmap/icon_check_circle_grey" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_doll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/rl_content"
+        android:layout_marginRight="8dp"
+        android:paddingBottom="@dimen/dp_4"
+        >
+
+        <ImageView
+            android:id="@+id/iv_doll"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon_doll" />
+    </RelativeLayout>
+</RelativeLayout>

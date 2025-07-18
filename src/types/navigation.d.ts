@@ -8,8 +8,16 @@ declare global {
 
 export type RootStackParamList = {
   Home: undefined;
+  Creation: { source?: string;[key: string]: any } | undefined;
   AddDoll: undefined;
   StoryMachinePanel: undefined;
+  DollPanel: {
+    dollId?: string;
+    source?: string;
+    dollData?: any;
+    id?: number;
+    [key: string]: any
+  } | undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

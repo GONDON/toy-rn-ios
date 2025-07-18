@@ -1,15 +1,39 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - boost (1.84.0)
   - BVLinearGradient (2.8.3):
     - React-Core
+  - DACircularProgress (2.3.1)
   - DoubleConversion (1.1.6)
   - fast_float (6.1.4)
   - FBLazyVector (0.78.2)
+  - FDFullscreenPopGesture (1.1)
   - fmt (11.0.2)
   - glog (0.3.5)
   - hermes-engine (0.78.2):
     - hermes-engine/Pre-built (= 0.78.2)
   - hermes-engine/Pre-built (0.78.2)
+  - IQKeyboardManager (6.4.2)
+  - Masonry (1.1.0)
+  - MBProgressHUD (0.9.2)
+  - "MBProgressHUD+JDragon (0.0.3)":
+    - MBProgressHUD (~> 0.9.2)
+  - MJExtension (3.1.2)
+  - MJRefresh (3.2.3)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1636,7 +1660,7 @@ PODS:
     - React-logger (= 0.78.2)
     - React-perflogger (= 0.78.2)
     - React-utils (= 0.78.2)
-  - RNScreens (4.11.1):
+  - RNScreens (4.13.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1657,9 +1681,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNScreens/common (= 4.11.1)
+    - RNScreens/common (= 4.13.1)
     - Yoga
-  - RNScreens/common (4.11.1):
+  - RNScreens/common (4.13.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1724,11 +1748,13 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - SGQRCode (4.1.0)
+  - SDCycleScrollView (1.82):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
   - SocketRocket (0.7.1)
-  - SVProgressHUD (2.3.1):
-    - SVProgressHUD/Core (= 2.3.1)
-  - SVProgressHUD/Core (2.3.1)
+  - SVProgressHUD (2.2.5)
   - ThingBluetooth (5.6.1):
     - ThingSmartUtil (~> 5.13)
   - ThingMachRegister (0.8.0)
@@ -1784,11 +1810,12 @@ PODS:
     - ThingSmartSocketChannelKit (~> 5.0)
     - ThingSmartUtil (~> 5.15)
     - YYModel
-  - ThingSmartDeviceKit (5.10.3):
+  - ThingSmartDeviceKit (5.11.1.1):
     - ThingMachRegister
     - ThingSmartBaseKit (~> 5.0)
     - ThingSmartDeviceCoreKit (~> 5.15)
     - ThingSmartMQTTChannelKit (~> 5.5)
+    - ThingSmartNetworkKit (>= 5.7.10)
     - ThingSmartShareKit (~> 5.0)
     - YYModel
   - ThingSmartFeedbackKit (5.0.1):
@@ -1849,17 +1876,28 @@ PODS:
     - ThingMbedtls (= 3.5.2)
     - ThingOpenSSLSDK (~> 1.1.1-t.0)
   - Yoga (0.0.0)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - AFNetworking (~> 4.0)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
+  - DACircularProgress
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - fast_float (from `../node_modules/react-native/third-party-podspecs/fast_float.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
+  - FDFullscreenPopGesture (~> 1.1)
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - IQKeyboardManager (~> 6.4.2)
+  - Masonry (= 1.1.0)
+  - "MBProgressHUD+JDragon (= 0.0.3)"
+  - MJExtension (~> 3.1.2)
+  - MJRefresh (~> 3.2.0)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -1924,13 +1962,31 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - SGQRCode (~> 4.1.0)
-  - SVProgressHUD
+  - SDCycleScrollView (~> 1.80)
+  - SDWebImage (~> 5.1.1)
+  - SVProgressHUD (~> 2.2.5)
   - ThingSmartCryption (from `./ios_core_sdk`)
   - ThingSmartHomeKit (~> 5.8.0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+  - YYCategories (~> 1.0.4)
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - DACircularProgress
+    - FDFullscreenPopGesture
+    - IQKeyboardManager
+    - Masonry
+    - MBProgressHUD
+    - "MBProgressHUD+JDragon"
+    - MJExtension
+    - MJRefresh
+    - SDCycleScrollView
+    - SDWebImage
+    - SocketRocket
+    - SVProgressHUD
+    - YYCategories
+    - YYModel
   https://github.com/tuya/tuya-pod-specs.git:
     - ThingBluetooth
     - ThingMachRegister
@@ -1958,11 +2014,6 @@ SPEC REPOS:
     - ThingSmartSocketChannelKit
     - ThingSmartTimerKit
     - ThingSmartUtil
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
-    - SGQRCode
-    - SocketRocket
-    - SVProgressHUD
-    - YYModel
 
 EXTERNAL SOURCES:
   boost:
@@ -2112,14 +2163,23 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   BVLinearGradient: cb006ba232a1f3e4f341bb62c42d1098c284da70
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: e32d34492c519a2194ec9d7f5e7a79d11b73f91c
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: 2771b98fb813fdc6f92edd7c9c0035ecabf9fee7
+  IQKeyboardManager: b41e0a4943fbac4c11a239d31a688667675f962e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  "MBProgressHUD+JDragon": 74b18a89dac13cc921df0e2b0c2945b29b15e7ab
+  MJExtension: 81e8e411ced318561dd09334b0c83d8227cef79c
+  MJRefresh: 2b1214a2dc8f4df4c5dcb028ea2ad4e245425fb7
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: be794de7dc6ed8f9f7fbf525f86e7651b8b68746
   RCTRequired: a83787b092ec554c2eb6019ff3f5b8d125472b3b
@@ -2180,11 +2240,12 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 4893bde33952f997a323eb1a1ee87a72764018ff
   ReactCodegen: 99ea3536c05be3c18d0c517acb56b5a6d726fc7b
   ReactCommon: 865ebe76504a95e115b6229dd00a31e56d2d4bfe
-  RNScreens: 8aec64fb213fd52a64445e2e470f7a9b546c5df3
+  RNScreens: ef16970d0f91f1750ca82ba0db5d521fc0055fba
   RNSVG: 4aaeac3fdc7c5bc88ca801e228f62fb469be37e9
-  SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
+  SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   ThingBluetooth: 3edb8956c3cb4c373fbfcb99aa0f14141118c974
   ThingMachRegister: 44c6eb53032ebfdeeaa1b610071e2cc8b5bfa0ff
   ThingMbedtls: 52721dc4ab458c5bcd4e2d679fc08d1bb716f3a0
@@ -2199,7 +2260,7 @@ SPEC CHECKSUMS:
   ThingSmartBLEMeshKit: 0b6a8c985410e82057795a8c097c4f4b97c4802b
   ThingSmartCryption: 33906a7bf4d19f26bf90dccde474e2bcba46c21f
   ThingSmartDeviceCoreKit: 82528b8d5642284d1099293d179eeba4d5112218
-  ThingSmartDeviceKit: 66b7d4d9081c2072ee8ed20802d05c72e3912eeb
+  ThingSmartDeviceKit: e11201f7547bb30aba190fcd1c023a0c8d2fb2d5
   ThingSmartFeedbackKit: 7eed8f5af3f3cd13a9fd1df626b8ac3933123401
   ThingSmartHomeKit: c19a171220081cf1e248e47da1941d152a161593
   ThingSmartMessageKit: 1b4fd6b47d30550e8e236ada77089470c2688441
@@ -2213,8 +2274,9 @@ SPEC CHECKSUMS:
   ThingSmartTimerKit: b1781788fbadea84cd293b9c5388d80b45f9f5f3
   ThingSmartUtil: cca6abca30937d839a40a06508ae0766b829cc1b
   Yoga: e14bad835e12b6c7e2260fc320bd00e0f4b45add
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 7ab7aec7baa11c4c8d7d3a6080fdc5559ecd0d10
+PODFILE CHECKSUM: 159ee4769fd86aaade00418e8bb122fb0ee6460e
 
 COCOAPODS: 1.16.2

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorActivityBg">#ffffff</color>
+    <color name="color_text">#80000000</color>
+    <color name="colorBlue">#ff1EAAFD</color>
+    <color name="btn_bg_blue">#ff1EAAFD</color>
+    <color name="transparent">#00000000</color>
+    <color name="btn_light_color">#96D9FC</color>
+    <color name="errColor">#ffFF4444</color>
+    <color name="page_color">#ffF6F7FB</color>
+
+</resources>

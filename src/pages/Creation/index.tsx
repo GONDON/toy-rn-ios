@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,9 @@ import {
   StatusBar,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
-import BottomNavigation from '../../components/BottomNavigation';
-import type { RootStackParamList } from '../../types/navigation';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 
 // 定义状态类型
 type EmptyStateType = 'no-story-machine' | 'no-doll';
@@ -19,9 +18,20 @@ type EmptyStateType = 'no-story-machine' | 'no-doll';
 const Index = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
-  
+  const route = useRoute<any>();
+
   // 控制显示状态：'no-story-machine' 或 'no-doll'
   const [emptyState, setEmptyState] = React.useState<EmptyStateType>('no-doll');
+
+  useEffect(() => {
+    // 处理从iOS传递过来的参数
+    console.log('🚀 [RN] Creation页面加载，路由参数:', route.params);
+
+    // 这里可以根据参数执行特定逻辑
+    if (route.params?.source === 'ios-tab') {
+      console.log('🚀 [RN] 从iOS标签栏进入创作页面');
+    }
+  }, [route.params]);
 
   const handleAddStoryMachine = () => {
     // TODO: 实现添加故事机功能
@@ -111,12 +121,6 @@ const Index = () => {
           </View>
         </View>
       </LinearGradient>
-
-      {/* 底部导航栏 */}
-      <BottomNavigation 
-        activeTab="creation" 
-        onTabPress={handleTabPress} 
-      />
     </View>
   );
 };

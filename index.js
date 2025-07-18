@@ -5,9 +5,13 @@
  * @FilePath: /demoapp/index.js
  * @Description: 
  */
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import App from './App';
-import {name as appName} from './app.json';
 
+// 确保应用正确注册
+AppRegistry.registerComponent('HelloWorld', () => App);
 
-AppRegistry.registerComponent(appName, () => App);
+// 添加错误处理
+if (__DEV__) {
+  console.log('App registered successfully');
+}

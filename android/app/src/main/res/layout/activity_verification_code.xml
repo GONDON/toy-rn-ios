@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="32dp"
+    android:paddingTop="16dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="16dp"
+    tools:context=".ui.account.VerificationCodeActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_verification_code"
+        android:textColor="#e6000000"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ll_verify_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/tv_title"
+        >
+
+        <com.chaos.view.PinView
+            android:id="@+id/pinView"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:inputType="number"
+            android:itemBackground="@drawable/edittext_border"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:cursorColor="@color/colorBlue"
+            app:cursorWidth="2dp"
+            app:hideLineWhenFilled="true"
+            app:itemCount="6"
+            app:itemHeight="44dp"
+            app:itemRadius="8dp"
+            app:itemSpacing="10dp"
+            app:itemWidth="44dp"
+            app:lineWidth="0dp"
+            app:lineColor="@color/transparent"
+            app:viewType="rectangle" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_err_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffFF4444"
+        android:textSize="12dp"
+        android:layout_below="@+id/ll_verify_code"
+        android:layout_marginTop="9dp"
+        />
+
+    <!-- 提示信息 -->
+    <TextView
+        android:id="@+id/tv_send_code_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#80000000"
+        android:textSize="12dp"
+        android:layout_below="@+id/ll_verify_code"
+        android:layout_marginTop="36dp"
+        />
+
+    <!-- 收不到验证码链接 -->
+    <TextView
+        android:id="@+id/tv_resend_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/receive_the_code"
+        android:textColor="#ff1989FA"
+        android:layout_marginTop="18dp"
+        android:textSize="14sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/tv_send_code_info"
+        />
+</RelativeLayout>

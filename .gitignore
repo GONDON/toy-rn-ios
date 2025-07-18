@@ -22,8 +22,8 @@ DerivedData
 *.xcuserstate
 **/.xcode.env.local
 ios/build
-ios/demoapp.xcodeproj/xcuserdata
-ios/demoapp.xcworkspace/xcuserdata
+ios/AIToys.xcodeproj/xcuserdata
+ios/AIToys.xcworkspace/xcuserdata
 
 # Android/IntelliJ
 #

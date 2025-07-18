@@ -1,0 +1,21 @@
+{
+    "config": {
+        "appId": 852121569,
+        "thingAppKey": "us4nm48mewaesxx3qaq9",
+        "appScheme": "ThingSmart",
+        "hotspotPrefixs": ["SmartLife"],
+        "needBle": true,
+        "activator_auto_serach_capacity": {
+                            "searchTypeBle": true,
+                            "searchTypeEZ": false,
+                            "searchTypePegasus": false,
+                            "searchTypeWired": false,
+                            "searchTypeZigbee": false,
+                            "searchTypeMatter": false
+                    },
+    },
+   "colors":{
+        "themeColor": "#FF5A28",
+    }
+}
+

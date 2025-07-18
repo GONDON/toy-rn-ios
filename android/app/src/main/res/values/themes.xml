@@ -1,0 +1,104 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Talpanpal" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorBlue</item>
+        <item name="colorAccent">@color/colorBlue</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/transparent</item>
+        <item name="android:colorBackground">@color/transparent</item>
+
+        <!-- 禁用 Material 主题的强制着色 -->
+        <item name="materialThemeOverlay">@null</item>
+        <item name="drawableTintMode">src_atop</item>
+        <item name="android:drawableTintMode">src_atop</item>
+    </style>
+
+    <style name="Theme.Talpanpal" parent="Base.Theme.Talpanpal">
+        <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:buttonStyle">@style/Widget.App.Button</item>
+    </style>
+
+    <style name="AppTheme.LaunchTheme" parent="Theme.AppCompat.NoActionBar">       <!-- 设置背景为图片或纯色 -->
+        <item name="android:windowBackground">@drawable/launch_screen_bg</item>
+        <!-- 隐藏ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="VerificationCodeBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/edittext_border</item>
+    </style>
+
+    <!--Dialog进入退出动画-->
+    <style name="EnterExitAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/exit_anim</item>
+    </style>
+
+    <style name="TextInputLayoutCustom" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:theme">@style/Theme.MaterialComponents.Light.NoActionBar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_height</item>
+        <item name="android:background">@drawable/login_input_shape</item>
+        <item name="android:paddingLeft">@dimen/dp_16</item>
+        <item name="android:paddingRight">@dimen/dp_16</item>
+
+        <item name="boxStrokeColor">@color/transparent</item>
+        <item name="boxBackgroundColor">@color/transparent</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxCollapsedPaddingTop">5dp</item>
+    </style>
+
+    <style name="TextInputLayoutCustom_Clear" parent="TextInputLayoutCustom">
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconCheckable">true</item>
+        <item name="endIconDrawable">@mipmap/icon_edit_clear</item>
+    </style>
+
+    <style name="TextInputEditTextCustom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">#e6000000</item>
+        <item name="android:textColorHint">#4d000000</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="circleCornerStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="CircularProgress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_circular</item>
+    </style>
+</resources>

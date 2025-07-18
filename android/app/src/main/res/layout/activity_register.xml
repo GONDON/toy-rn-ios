@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.account.RegisterActivity"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textColor="#e6000000"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
+        style="@style/TextInputLayoutCustom_Clear"
+        android:layout_marginTop="16dp"
+        android:hint="@string/account"
+        android:layout_below="@+id/tv_title"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_user_name"
+            style="@style/TextInputEditTextCustom"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_err_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffFF4444"
+        android:textSize="12dp"
+        android:layout_below="@+id/text_input_layout"
+        android:layout_marginTop="8dp"
+        />
+
+    <Button
+        android:id="@+id/btn_verification_code"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:background="@drawable/btn_blue_selector"
+        android:gravity="center"
+        android:text="@string/verification_code"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="72dp"
+        android:textSize="@dimen/btn_size"
+        android:layout_below="@+id/text_input_layout"
+        />
+</RelativeLayout>

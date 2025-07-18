@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="96dp"
+    android:layout_height="98dp"
+    android:gravity="center"
+    >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_doll"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/icon_doll"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circleCornerStyle"
+        android:background="#33000000"
+        app:strokeColor="#ff17A7FF"
+        app:strokeWidth="0dp"
+        android:padding="3dp"
+        />
+    <TextView
+        android:id="@+id/tv_doll_name"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:text="Mickey"
+        android:textColor="#99000000"
+        android:textSize="14dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
+</LinearLayout>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="32dp"
+    android:paddingTop="16dp"
+    android:paddingRight="32dp"
+    android:paddingBottom="16dp"
+    tools:context=".ui.account.LoginPwdActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="#e6000000"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ll_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/login_input_shape"
+        android:layout_below="@+id/tv_title"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutCustom_Clear"
+            android:hint="@string/account"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_account"
+                style="@style/TextInputEditTextCustom" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#E9EAEE" />
+
+        <FrameLayout
+            android:id="@+id/container_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayoutCustom"
+                android:hint="@string/password"
+                android:paddingRight="120dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    style="@style/TextInputEditTextCustom"
+                    android:inputType="textPassword"
+                   />
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_visibility_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:src="@mipmap/icon_pwd_visibility_open"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_clear_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:src="@mipmap/icon_edit_clear"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_err_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffFF4444"
+        android:textSize="12dp"
+        android:layout_below="@+id/ll_input_container"
+        android:layout_marginTop="8dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_agree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ll_input_container"
+        >
+
+        <CheckBox
+            android:id="@+id/cb_agreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <com.talenpal.talenpalapp.view.ClickableTextView
+            android:id="@+id/tv_link"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:lineSpacingExtra="1.2dp"
+            android:textColor="#80000000"
+            android:textSize="12dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_blue_selector"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:layout_below="@+id/ll_agree"
+        android:textSize="@dimen/btn_size"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginTop="15dp"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorBlue"
+        android:layout_below="@+id/btn_login"
+        android:textSize="@dimen/btn_size"
+        android:textStyle="bold" />
+
+</RelativeLayout>

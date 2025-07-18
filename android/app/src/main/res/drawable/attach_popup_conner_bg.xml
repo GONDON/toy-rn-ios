@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    &lt;!&ndash; 阴影层 &ndash;&gt;-->
+<!--    <item android:top="1dp" android:left="1dp">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <gradient-->
+<!--                android:startColor="#66000000"-->
+<!--                android:endColor="#00000000"-->
+<!--                android:type="linear"-->
+<!--                />-->
+<!--            <corners android:radius="12dp" />-->
+<!--        </shape>-->
+<!--    </item>-->
+    <!-- 原始背景层 -->
+    <item >
+        <shape android:shape="rectangle">
+            <corners android:radius="12dp" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

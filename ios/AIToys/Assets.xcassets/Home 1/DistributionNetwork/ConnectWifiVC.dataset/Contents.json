@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "ConnectWifiVC.xib",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

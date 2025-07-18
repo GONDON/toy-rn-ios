@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/icon_doll"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circleCornerStyle"
+        app:strokeColor="#ffF6F7FB"
+        app:strokeWidth="1.45dp"
+        android:padding="2dp"
+        android:id="@+id/iv_doll"
+        android:background="@color/white"
+        />
+</LinearLayout>
