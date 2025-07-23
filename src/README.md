@@ -25,7 +25,7 @@
 git subtree push --prefix=src toy-rn-src main
 ```
 
-### 从独立仓库拉取更改
+### 从独立仓库拉取更改12
 
 ```bash
 git subtree pull --prefix=src toy-rn-src main --squash
