@@ -15,6 +15,8 @@ import Creation from './src/pages/Creation';
 import AddDoll from './src/pages/AddDoll';
 import StoryMachinePanel from './src/pages/StoryMachinePanel';
 import DollPanel from './src/pages/DollPanel';
+import { MusicPlayerProvider } from './src/contexts/MusicPlayerContext';
+import { MusicPlayer } from './src/components/MusicPlayer';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,37 +29,42 @@ export default function App(props: any) {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName={initialRoute}
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen
-            name="Creation"
-            component={Creation}
-            initialParams={initialParams}
-          />
-          <Stack.Screen
-            name="Home"
-            component={Creation}
-            initialParams={initialParams}
-          />
-          <Stack.Screen
-            name="AddDoll"
-            component={AddDoll}
-          />
-          <Stack.Screen
-            name="StoryMachinePanel"
-            component={StoryMachinePanel}
-          />
-          <Stack.Screen
-            name="DollPanel"
-            component={DollPanel}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <MusicPlayerProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName={initialRoute}
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen
+              name="Creation"
+              component={Creation}
+              initialParams={initialParams}
+            />
+            <Stack.Screen
+              name="Home"
+              component={Creation}
+              initialParams={initialParams}
+            />
+            <Stack.Screen
+              name="AddDoll"
+              component={AddDoll}
+            />
+            <Stack.Screen
+              name="StoryMachinePanel"
+              component={StoryMachinePanel}
+            />
+            <Stack.Screen
+              name="DollPanel"
+              component={DollPanel}
+            />        
+          </Stack.Navigator>
+
+          {/* 全局音乐播放器 */}
+          <MusicPlayer />
+        </NavigationContainer>
+      </MusicPlayerProvider>
     </SafeAreaProvider>
   );
 }

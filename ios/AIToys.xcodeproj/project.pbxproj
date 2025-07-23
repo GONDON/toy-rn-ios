@@ -2105,10 +2105,12 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AIToys/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AIToys/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "This app needs access to your music library to play audio files.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "允许使用蓝牙以访问你附近的设备";
 				INFOPLIST_KEY_NSCameraUsageDescription = "允许使用相机以扫描设备二维码";
 				INFOPLIST_KEY_NSLocationUsageDescription = "允许定位以访问你附近的设备";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "允许定位以访问你附近的设备";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to microphone for audio recording features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2148,10 +2150,12 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AIToys/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AIToys/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "This app needs access to your music library to play audio files.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "允许使用蓝牙以访问你附近的设备";
 				INFOPLIST_KEY_NSCameraUsageDescription = "允许使用相机以扫描设备二维码";
 				INFOPLIST_KEY_NSLocationUsageDescription = "允许定位以访问你附近的设备";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "允许定位以访问你附近的设备";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to microphone for audio recording features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

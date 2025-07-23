@@ -16,13 +16,39 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  ActivityIndicator,
-  Platform,
+  Alert,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { DollInstance, getDollInstance } from '../../api';
+// import { DollInstance, getDollInstance } from '../../api';
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
+import { createAudioTrack } from '../../utils/audioUtils';
+import { Track } from '../../types/MusicPlayer';
 
 type DollType = 'creative' | 'exploration' | 'ip';
+
+// 临时类型定义
+interface DollInstance {
+  dollModel: {
+    id: number;
+    name: string;
+    type: DollType;
+    backgroundImg?: string;
+    coverImg?: string;
+  };
+  totalStoryNum: number;
+  totalStoryDuration: number;
+}
+
+// 音频项目接口
+interface AudioItem {
+  id: string;
+  title: string;
+  duration: string;
+  category: string;
+  image: any;
+  url: string;
+  durationSeconds?: number;
+}
 
 const formatDuration = (seconds: number) => {
   if (isNaN(seconds) || seconds < 0) {
@@ -38,8 +64,17 @@ const DollPanel = (props: any) => {
   const route = useRoute();
 
   // 从props或route.params获取数据
-  const dollData = props?.dollData || route.params?.dollData;
-  const id = props?.id || route.params?.id || dollData?.dollModel?.id || 15996;
+  const dollData = (props as any)?.dollData || (route.params as any)?.dollData;
+  const id = (props as any)?.id || (route.params as any)?.id || dollData?.dollModel?.id || 15996;
+
+  // 音乐播放器相关
+  const {
+    setPlaylist,
+    play,
+    showPlayer,
+    playbackState,
+    isVisible: isPlayerVisible
+  } = useMusicPlayer();
 
   // 处理从iOS传递过来的参数
   useEffect(() => {
@@ -61,22 +96,23 @@ const DollPanel = (props: any) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchDollData = async () => {
-      try {
-        setLoading(true);
-        const response = await getDollInstance(id);
-        if (response.code === 0) {
-          setDollInfo(response.data);
-        } else {
-          setError(response.msg || 'Failed to fetch doll data');
-        }
-      } catch (e) {
-        setError('An unexpected error occurred.');
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // 暂时注释掉API调用，使用mock数据
+    // const fetchDollData = async () => {
+    //   try {
+    //     setLoading(true);
+    //     const response = await getDollInstance(id);
+    //     if (response.code === 0) {
+    //       setDollInfo(response.data);
+    //     } else {
+    //       setError(response.msg || 'Failed to fetch doll data');
+    //     }
+    //   } catch (e) {
+    //     setError('An unexpected error occurred.');
+    //     console.error(e);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
 
     // fetchDollData();
   }, [id]);
@@ -84,14 +120,15 @@ const DollPanel = (props: any) => {
   const dollType = dollInfo?.dollModel?.type;
 
   const renderAudioList = () => {
-    // Mock data based on the screenshot
-    const audioItems = [
+    // 使用真实音频URL的Mock数据
+    const audioItems: AudioItem[] = [
       {
         id: '1',
         title: '小老鼠偷油吃的故事',
         duration: '14 Min',
         category: '寓言故事',
         image: require('../../img/story-default-cover.png'),
+        url: 'https://tosdata-test.zhinengtongbu.com/jxwnewdata/audio/mp3_test/16b97d9c710a7fba7739e7da509a8c1c/16b97d9c710a7fba7739e7da509a8c1c.mp3?sign=0ca0255bdadd9b652be9e56ea2051d97&t=1753269324',
       },
       {
         id: '2',
@@ -99,6 +136,7 @@ const DollPanel = (props: any) => {
         duration: '14 Min',
         category: '寓言故事',
         image: require('../../img/story-default-cover.png'),
+        url: 'https://tosdata-test.zhinengtongbu.com/jxwnewdata/audio/mp3_test/16b97d9c710a7fba7739e7da509a8c1c/16b97d9c710a7fba7739e7da509a8c1c.mp3?sign=0ca0255bdadd9b652be9e56ea2051d97&t=1753269324',
       },
       {
         id: '3',
@@ -106,6 +144,7 @@ const DollPanel = (props: any) => {
         duration: '14 Min',
         category: '寓言故事',
         image: require('../../img/story-default-cover.png'),
+        url: 'https://tosdata-test.zhinengtongbu.com/jxwnewdata/audio/mp3_test/16b97d9c710a7fba7739e7da509a8c1c/16b97d9c710a7fba7739e7da509a8c1c.mp3?sign=0ca0255bdadd9b652be9e56ea2051d97&t=1753269324',
       },
       {
         id: '4',
@@ -113,62 +152,53 @@ const DollPanel = (props: any) => {
         duration: '35 Min',
         category: '寓言故事',
         image: require('../../img/story-default-cover.png'),
-      },
-       {
-        id: '5',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '6',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '7',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '8',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '9',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '10',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-          id: '11',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
-      }, {
-        id: '12',
-        title: '农夫与蛇',
-        duration: '35 Min',
-        category: '寓言故事',
-        image: require('../../img/story-default-cover.png'),
+        url: 'https://tosdata-test.zhinengtongbu.com/jxwnewdata/audio/mp3_test/16b97d9c710a7fba7739e7da509a8c1c/16b97d9c710a7fba7739e7da509a8c1c.mp3?sign=0ca0255bdadd9b652be9e56ea2051d97&t=1753269324',
       },
     ];
+
+    // 播放音频的处理函数
+    const handlePlayAudio = async (audioItem: AudioItem, index: number) => {
+      try {
+        console.log('🎵 [DollPanel] 开始播放音频:', audioItem.title);
+
+        // 创建播放列表，使用网络音频URL
+        const tracks: Track[] = audioItems.map((item, idx) => createAudioTrack({
+          id: item.id,
+          title: item.title,
+          url: item.url,
+          duration: 300, // 默认5分钟，实际播放时会自动获取真实时长
+          artist: item.category,
+          artwork: 'https://via.placeholder.com/300x300/4A90E2/ffffff?text=🎵',
+        }));
+
+        console.log('🎵 [DollPanel] 设置播放列表，曲目数量:', tracks.length);
+        console.log('🎵 [DollPanel] 当前播放音频URL:', audioItem.url);
+
+        // 设置播放列表并开始播放
+        await setPlaylist(tracks, index);
+        showPlayer();
+
+        // 延迟一下再开始播放，确保播放器已准备好
+        setTimeout(async () => {
+          try {
+            await play();
+            console.log('🎵 [DollPanel] 音频播放开始');
+          } catch (playError) {
+            console.error('❌ [DollPanel] 播放失败:', playError);
+            Alert.alert('播放失败', '无法播放此音频文件，请检查网络连接');
+          }
+        }, 500);
+
+      } catch (error) {
+        console.error('❌ [DollPanel] 播放音频失败:', error);
+        Alert.alert('播放失败', '无法播放此音频文件，请稍后重试');
+      }
+    };
 
     return (
       <View style={styles.audioListContainer}>
         <Text style={styles.audioListTitle}>音频清单</Text>
-        {dollType === 'explore' && (
+        {dollType === 'exploration' && (
           <View style={styles.warningContainer}>
             <Text style={styles.warningText}>所有音频只能试听1分钟</Text>
           </View>
@@ -189,11 +219,28 @@ const DollPanel = (props: any) => {
                 {item.duration} | {item.category}
               </Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => handlePlayAudio(item, index)}
+              style={styles.playButtonContainer}
+            >
               <Image source={require('../../img/play11.png')} style={styles.playButton} />
             </TouchableOpacity>
           </View>
         ))}
+
+        {/* 音乐播放器状态显示 */}
+        {isPlayerVisible && (
+          <View style={styles.playerStatusContainer}>
+            <Text style={styles.playerStatusText}>
+              🎵 播放器已激活 - {playbackState.isPlaying ? '播放中' : '已暂停'}
+            </Text>
+            {playbackState.currentTrack && (
+              <Text style={styles.currentTrackText}>
+                当前播放: {playbackState.currentTrack.title}
+              </Text>
+            )}
+          </View>
+        )}
       </View>
     );
   };
@@ -434,6 +481,29 @@ const styles = StyleSheet.create({
   playButton: {
     width: 20,
     height: 20,
+  },
+  playButtonContainer: {
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+  },
+  playerStatusContainer: {
+    marginTop: 15,
+    padding: 12,
+    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+    borderRadius: 8,
+    borderLeftWidth: 3,
+    borderLeftColor: '#4A90E2',
+  },
+  playerStatusText: {
+    fontSize: 14,
+    color: '#4A90E2',
+    fontWeight: '600',
+  },
+  currentTrackText: {
+    fontSize: 12,
+    color: '#666',
+    marginTop: 4,
   },
 
   footer: {

@@ -1373,6 +1373,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-track-player (4.1.1):
+    - React-Core
+    - SwiftAudioEx (= 1.1.0)
   - React-NativeModulesApple (0.78.2):
     - glog
     - hermes-engine
@@ -1755,6 +1758,7 @@ PODS:
   - SDWebImage/Core (5.1.1)
   - SocketRocket (0.7.1)
   - SVProgressHUD (2.2.5)
+  - SwiftAudioEx (1.1.0)
   - ThingBluetooth (5.6.1):
     - ThingSmartUtil (~> 5.13)
   - ThingMachRegister (0.8.0)
@@ -1932,6 +1936,7 @@ DEPENDENCIES:
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
+  - react-native-track-player (from `../node_modules/react-native-track-player`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-performancetimeline (from `../node_modules/react-native/ReactCommon/react/performance/timeline`)
@@ -2014,6 +2019,8 @@ SPEC REPOS:
     - ThingSmartSocketChannelKit
     - ThingSmartTimerKit
     - ThingSmartUtil
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - SwiftAudioEx
 
 EXTERNAL SOURCES:
   boost:
@@ -2097,6 +2104,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
     :path: "../node_modules/@react-native-community/slider"
+  react-native-track-player:
+    :path: "../node_modules/react-native-track-player"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -2212,6 +2221,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 6a39463c32ce831c4c2aa8469273114d894b6be9
   react-native-safe-area-context: 143faa2b60b6cc3e06e966d5fa23af6b31326814
   react-native-slider: 310d3f89edd6ca8344a974bfe83a29a3fbb60e5a
+  react-native-track-player: 6dc2e2633265704b8ab6d8124b80239d4ed1f911
   React-NativeModulesApple: fd0545efbb7f936f78edd15a6564a72d2c34bb32
   React-perflogger: 5f8fa36a8e168fb355efe72099efe77213bc2ac6
   React-performancetimeline: 8c0ecfa1ae459cc5678a65f95ac3bf85644d6feb
@@ -2246,6 +2256,7 @@ SPEC CHECKSUMS:
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftAudioEx: f6aa653770f3a0d3851edaf8d834a30aee4a7646
   ThingBluetooth: 3edb8956c3cb4c373fbfcb99aa0f14141118c974
   ThingMachRegister: 44c6eb53032ebfdeeaa1b610071e2cc8b5bfa0ff
   ThingMbedtls: 52721dc4ab458c5bcd4e2d679fc08d1bb716f3a0
@@ -2277,6 +2288,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 159ee4769fd86aaade00418e8bb122fb0ee6460e
+PODFILE CHECKSUM: f06bf259480ff3ac54b713390abab961f09e6e0d
 
 COCOAPODS: 1.16.2
