@@ -1,0 +1,13 @@
+{
+  "creation": {
+    "title": "Let's start your plush toy design!",
+    "noStoryMachine": "No story machine yet, let's add one!",
+    "addStoryMachine": "Add Story Machine"
+  },
+  "navigation": {
+    "home": "Home",
+    "creation": "Creation",
+    "call": "Call",
+    "me": "Me"
+  }
+}
