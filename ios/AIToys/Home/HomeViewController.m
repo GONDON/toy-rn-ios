@@ -24,6 +24,7 @@
 #import "FindDeviceViewController.h"
 #import "BannerModel.h"
 #import "ReactViewController.h"
+#import "RNNavigationManager.h"
 
 static const CGFloat JXPageheightForHeaderInSection = 126;
 
@@ -399,6 +400,11 @@ static const CGFloat JXPageheightForHeaderInSection = 126;
         if(self.deviceArr.count>0){
             HomeDeviceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeDeviceCell" forIndexPath:indexPath];
             cell.deviceList = self.deviceArr;
+            cell.itemClickBlock = ^(NSInteger index) {
+                // 跳转到RN故事机面板页面
+                ThingSmartDeviceModel *selectedDevice = weakSelf.deviceArr[index];
+                [weakSelf navigateToRNPageWithDevice:selectedDevice];
+            };
             return cell;
         }else{
             HomeNoDeviceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNoDeviceCell" forIndexPath:indexPath];
@@ -657,18 +663,19 @@ static const CGFloat JXPageheightForHeaderInSection = 126;
 }
 */
 
+// 通用的RN页面跳转方法
+- (void)navigateToRNPage:(NSString *)routeName withParams:(NSDictionary * _Nullable)params {
+    [RNNavigationManager navigateFromViewController:self toRoute:routeName withParams:params];
+}
+
 - (void)navigateToRNPageWithDoll:(NSString *)doll {
-    // 创建RN视图控制器，导航到DollPanel页面
-    NSDictionary *params = @{
-        @"dollId": doll ?: @"",
-        @"source": @"home-page",
-        @"timestamp": @([[NSDate date] timeIntervalSince1970])
-    };
+    // 使用导航管理器跳转到公仔面板
+    [RNNavigationManager navigateToDollPanelFromViewController:self withDollId:doll];
+}
 
-    ReactViewController *rnVC = [ReactViewController viewControllerWithInitialRoute:@"DollPanel" params:params];
-
-    // 跳转到RN页面
-    [self.navigationController pushViewController:rnVC animated:YES];
+- (void)navigateToRNPageWithDevice:(ThingSmartDeviceModel *)device {
+    // 使用导航管理器跳转到故事机面板
+    [RNNavigationManager navigateToStoryMachinePanelFromViewController:self withDevice:device];
 }
 
 @end

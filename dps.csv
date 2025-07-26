@@ -1,0 +1,64 @@
+﻿DP ID,功能点名称,标识符,数据传输类型,数据类型,功能点属性,上报频率限制,备注
+2,电量,battery_percentage,只上报（ro）,value,"数值范围: 0-100,
+间距: 10, 倍数: 0,
+单位: %",,
+3,音量,volume_set,可下发可上报（rw）,value,"数值范围: 0-100,
+间距: 10, 倍数: 0,
+单位: %",,
+4,充电状态,charge_status,只上报（ro）,enum,"枚举值: none, charging, charge_done",,
+101,开关,switch_1,只上报（ro）,bool,,,只上报，不支持下发
+102,播放状态,playback,可下发可上报（rw）,raw,,,"故事id+播放/暂停状态
+{
+""fileId"": ""123"",
+""action"": ""play""
+}"
+103,公仔id同步,toy_id,可下发可上报（rw）,string,,,开机、设备联网与感应公仔nfc时，需上报公仔id
+104,故事资源同步,story_synchronize,只下发（wr）,raw,,,"面板下发故事资源链接与时长给到设备播放使用，需包括故事id与链接，若有多个故事资源，则拆分dp下发,故事id+故事链接"
+105,下载故事进度,story_downloading,可下发可上报（rw）,raw,,,"设备发起、结束下载故事、播放故事时时使用
+故事id+下载成功、下载失败、播放成功、播放失败、原因
+{
+""dollId"": ""abc"",
+""fileId"": ""123"",
+""status"": 1  //  状态枚举
+""message"": ""download error""
+}"
+106,故事播放,story_playing,可下发可上报（rw）,raw,,,"播放故事时使用
+故事id、开始播放/暂停播放/结束播放/播放失败{
+""dollId"": ""abc"",
+""fileId"": ""123"",
+""action"": ""play""
+""message"": ""play error""
+}"
+107,故事资源删除,story_delete,可下发可上报（rw）,raw,,,"App/配置云配置故事时使用。
+当公仔删除故事时，下发dp与设备同步。
+{
+""dollId"": ""abc"",
+""fileIds"": [
+""123"",
+""456""
+]
+}"
+108,Ai对话,ai_converstation,可下发可上报（rw）,bool,,,
+109,Ai对话模式,ai_conversation_mode,可下发可上报（rw）,enum,"枚举值: ontinuous_conversation, qa_conversation",,
+110,Ai对话状态,ai_conversation_status,可下发可上报（rw）,enum,"枚举值: conversation_start, conversation_end",,
+111,语音通话,voice_call_status,可下发可上报（rw）,bool,,,
+112,通话状态,call_status,只上报（ro）,raw,,,设备上报用户id+占线/接通中 、无法接通、挂断、未接通+打入/打出
+113,语音通话,call,只上报（ro）,raw,,,用户id+通话开始/通话结束
+114,屏幕亮度,light_percentage,可下发可上报（rw）,value,"数值范围: 0-7,
+间距: 1, 倍数: 0,
+单位:",,
+115,最大音量,max_volume_set,可下发可上报（rw）,value,"数值范围: 0-10,
+间距: 1, 倍数: 0,
+单位:",,
+116,耳机音量限制,headphone_volume_limit,可下发可上报（rw）,value,"数值范围: 0-10,
+间距: 1, 倍数: 0,
+单位:",,
+117,切换音效,music_set,可下发可上报（rw）,raw,,,
+118,睡眠模式开关,sleep_mode,可下发可上报（rw）,bool,,,
+119,睡眠启动时间段,sleep_time,可下发可上报（rw）,raw,,,开始时间+结束时间
+120,哄睡音频,sleep_video,可下发可上报（rw）,raw,,,音频id+音频链接
+121,哄睡音频清单,sleep_list,可下发可上报（rw）,raw,,,
+122,删除哄睡音频,sleep_detele,可下发可上报（rw）,raw,,,
+125,时间显示,time_format,可下发可上报（rw）,enum,"枚举值: 24, 12",,
+126,低电量提醒,low_battery_alarm,可下发可上报（rw）,enum,"枚举值: alarm, normal",,
+127,恢复出厂设置,restore_default,只上报（ro）,enum,"枚举值: restore, normal",,

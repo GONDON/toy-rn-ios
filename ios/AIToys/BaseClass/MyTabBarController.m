@@ -12,6 +12,7 @@
 #import "MineViewController.h"
 #import "LoginViewController.h"
 #import "ReactViewController.h"
+#import "RNNavigationManager.h"
 
 
 @interface MyTabBarController ()<UITabBarControllerDelegate>
@@ -67,7 +68,12 @@
                            title:LocalString(@"首页")];
     
     // 使用React Native视图控制器替代原生创作页面
-    ReactViewController *creationVC = [ReactViewController viewControllerWithInitialRoute:@"Creation"];
+    // 为创作页面添加来源标识参数
+    NSDictionary *creationParams = @{
+        @"source": @"ios-tab",
+        @"timestamp": @([[NSDate date] timeIntervalSince1970])
+    };
+    ReactViewController *creationVC = [ReactViewController viewControllerWithInitialRoute:@"Creation" params:creationParams];
     // 隐藏导航栏，让RN页面充满屏幕
     creationVC.navigationItem.title = @"";
     creationVC.navigationController.navigationBarHidden = YES;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,21 +13,95 @@ import {
   Dimensions,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
+import { useSettingsPanelDPs } from '../../hooks/useDPManager';
+import {  useIntegratedDPStore } from '../../hooks/useDPBridge';
+import { ChargeStatus, AIConversationMode, TimeFormat } from '../../types/dp';
+import { formatDPValue } from '../../utils/dpUtils';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const SettingsPanel = () => {
-  // 状态管理
+  // DP 数据管理
+  const dpData = useSettingsPanelDPs();
+  const { setDPValue } = useIntegratedDPStore();
+
+  // 本地UI状态管理
   const [nickname, setNickname] = useState('小米粒');
   const [backgroundInfo, setBackgroundInfo] = useState('');
-  const [aiChatEnabled, setAiChatEnabled] = useState(true);
-  const [callSettingsEnabled, setCallSettingsEnabled] = useState(true);
   const [nicknameModalVisible, setNicknameModalVisible] = useState(false);
   const [tempNickname, setTempNickname] = useState('');
   const [backgroundModalVisible, setBackgroundModalVisible] = useState(false);
   const [tempBackgroundInfo, setTempBackgroundInfo] = useState('');
-  const [brightness, setBrightness] = useState(9);
-  const [volume, setVolume] = useState(9);
+
+  // 从DP数据获取实际值
+  const batteryPercentage = dpData.battery.value || 0;
+  const chargeStatus = dpData.chargeStatus.value || ChargeStatus.NONE;
+  const aiChatEnabled = dpData.aiConversation.value || false;
+  const aiConversationMode = dpData.aiConversationMode.value || AIConversationMode.CONTINUOUS;
+  const brightness = dpData.brightness.value || 0;
+  const maxVolume = dpData.maxVolume.value || 0;
+  const headphoneVolumeLimit = dpData.headphoneVolumeLimit.value || 0;
+  const timeFormat = dpData.timeFormat.value || TimeFormat.HOUR_24;
+  const lowBatteryAlarm = dpData.lowBatteryAlarm.value || false;
+
+  // 通话设置（暂时保持本地状态，因为CSV中没有对应的DP）
+  const [callSettingsEnabled, setCallSettingsEnabled] = useState(true);
+
+  // DP 数据变化处理函数
+  const handleAIChatToggle = async (value: boolean) => {
+    try {
+      await setDPValue(dpData.aiConversation.state?.definition.id!, value);
+    } catch (error) {
+      console.error('设置AI对话开关失败:', error);
+    }
+  };
+
+  const handleBrightnessChange = async (value: number) => {
+    try {
+      await setDPValue(dpData.brightness.state?.definition.id!, value);
+    } catch (error) {
+      console.error('设置屏幕亮度失败:', error);
+    }
+  };
+
+  const handleMaxVolumeChange = async (value: number) => {
+    try {
+      await setDPValue(dpData.maxVolume.state?.definition.id!, value);
+    } catch (error) {
+      console.error('设置最大音量失败:', error);
+    }
+  };
+
+  const handleHeadphoneVolumeLimitChange = async (value: number) => {
+    try {
+      await setDPValue(dpData.headphoneVolumeLimit.state?.definition.id!, value);
+    } catch (error) {
+      console.error('设置耳机音量限制失败:', error);
+    }
+  };
+
+  const handleTimeFormatToggle = async (value: boolean) => {
+    try {
+      const timeFormatValue = value ? TimeFormat.HOUR_24 : TimeFormat.HOUR_12;
+      await setDPValue(dpData.timeFormat.state?.definition.id!, timeFormatValue);
+    } catch (error) {
+      console.error('设置时间格式失败:', error);
+    }
+  };
+
+  // 格式化显示值
+  const formatBatteryDisplay = () => {
+    if (chargeStatus === ChargeStatus.CHARGING) {
+      return `${batteryPercentage}% 充电中`;
+    } else if (chargeStatus === ChargeStatus.CHARGE_DONE) {
+      return `${batteryPercentage}% 已充满`;
+    }
+    return `${batteryPercentage}%`;
+  };
+
+  const formatAIConversationMode = () => {
+    return aiConversationMode === AIConversationMode.CONTINUOUS ? '自然连续对话' : '问答对话';
+  };
   
   // 下载清单相关状态
   const [downloadListVisible, setDownloadListVisible] = useState(false);
@@ -184,7 +258,7 @@ const SettingsPanel = () => {
         <View style={styles.batteryIcon}>
           <View style={styles.batteryLevel} />
         </View>
-        <Text style={styles.batteryText}>100%</Text>
+        <Text style={styles.batteryText}>{formatBatteryDisplay()}</Text>
       </View>
 
       {/* 设备图片 */}
@@ -255,7 +329,7 @@ const SettingsPanel = () => {
           </View>
           <Switch
             value={aiChatEnabled}
-            onValueChange={setAiChatEnabled}
+            onValueChange={handleAIChatToggle}
             trackColor={{ false: '#E5E5E5', true: '#1EAAFD' }}
             thumbColor={aiChatEnabled ? '#FFFFFF' : '#FFFFFF'}
             style={{ marginBottom: 12 }}
@@ -275,7 +349,7 @@ const SettingsPanel = () => {
             <Text style={styles.settingLabel}>AI对话模式</Text>
           </View>
           <View style={styles.settingRight}>
-            <Text style={styles.settingValue}>自然连续对话</Text>
+            <Text style={styles.settingValue}>{formatAIConversationMode()}</Text>
             <Text style={styles.arrowIcon}>›</Text>
           </View>
         </TouchableOpacity>
@@ -329,11 +403,11 @@ const SettingsPanel = () => {
             </View>
             <Slider
               style={styles.slider}
-              minimumValue={1}
-              maximumValue={9}
+              minimumValue={0}
+              maximumValue={7}
               step={1}
               value={brightness}
-              onValueChange={setBrightness}
+              onValueChange={handleBrightnessChange}
               minimumTrackTintColor="#1EAAFD"
               maximumTrackTintColor="#E5E5E5"
               thumbTintColor="#1EAAFD"
@@ -356,15 +430,15 @@ const SettingsPanel = () => {
                 source={require('../../img/volume-icon.png')}
                 style={styles.sliderIcon}
               />
-              <Text style={styles.sliderValue}>{volume} Gears</Text>
+              <Text style={styles.sliderValue}>{maxVolume} Gears</Text>
             </View>
             <Slider
               style={styles.slider}
-              minimumValue={1}
-              maximumValue={9}
+              minimumValue={0}
+              maximumValue={10}
               step={1}
-              value={volume}
-              onValueChange={setVolume}
+              value={maxVolume}
+              onValueChange={handleMaxVolumeChange}
               minimumTrackTintColor="#1EAAFD"
               maximumTrackTintColor="#E5E5E5"
               thumbTintColor="#1EAAFD"
@@ -382,8 +456,8 @@ const SettingsPanel = () => {
             <Text style={styles.settingLabel}>耳机音量限制</Text>
           </View>
           <Switch
-            value={true}
-            onValueChange={() => {}}
+            value={headphoneVolumeLimit > 0}
+            onValueChange={(value) => handleHeadphoneVolumeLimitChange(value ? 5 : 0)}
             trackColor={{ false: '#E5E5E5', true: '#1EAAFD' }}
             thumbColor={'#FFFFFF'}
             style={{ marginBottom: 12 }}
@@ -415,8 +489,8 @@ const SettingsPanel = () => {
             <Text style={styles.settingLabel}>24小时制</Text>
           </View>
           <Switch
-            value={false}
-            onValueChange={() => {}}
+            value={timeFormat === TimeFormat.HOUR_24}
+            onValueChange={handleTimeFormatToggle}
             trackColor={{ false: '#E5E5E5', true: '#1EAAFD' }}
             thumbColor={'#FFFFFF'}
             style={{ marginBottom: 12 }}

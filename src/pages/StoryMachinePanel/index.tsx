@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,15 +9,54 @@ import {
   ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import SettingsPanel from './SettingsPanel';
 import SleepPanel from './SleepPanel';
+import { useDPManager } from '../../hooks/useDPManager';
+import { DPDebugPanel } from '../../components/DPDebugPanel';
+import { nativeModuleDebugger } from '../../utils/nativeModuleDebug';
+import { useDeviceConnection, DeviceConnectionParams } from '../../hooks/useDeviceConnection';
 
 const StoryMachinePanel = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const [activeTab, setActiveTab] = useState('sleep'); // 当前激活的tab
+  const route = useRoute<any>();
+  const [activeTab, setActiveTab] = useState('settings'); // 当前激活的tab
   const isSleepTab = activeTab === 'sleep';
+
+
+
+  const { isDeviceConnected } = useDPManager();
+
+  // 从路由参数获取设备信息
+  const deviceDetails = route.params?.deviceDetails;
+  const deviceConnectionParams: DeviceConnectionParams | undefined = deviceDetails ? {
+    deviceId: deviceDetails.deviceId,
+    deviceName: deviceDetails.deviceName || '未知设备',
+    uuid: deviceDetails.uuid,
+    productId: deviceDetails.productId,
+    isOnline: deviceDetails.isOnline,
+    dps: deviceDetails.dps,
+  } : undefined;
+
+  // 使用设备连接Hook
+  const {
+    isConnecting,
+    isConnected,
+    connectionError,
+  } = useDeviceConnection(deviceConnectionParams);
+
+  // 在开发环境下检查原生模块状态
+  useEffect(() => {
+    if (isDevelopment) {
+      console.log('🔍 检查原生模块状态...');
+      nativeModuleDebugger.checkStatus();
+    }
+  }, []);
+
+  // 调试面板状态（仅开发环境）
+  const [debugPanelVisible, setDebugPanelVisible] = useState(false);
+  const isDevelopment = __DEV__;
 
   // 处理关闭页面
   const handleClose = () => {
@@ -44,14 +83,46 @@ const StoryMachinePanel = () => {
         {/* 顶部标题栏 */}
         <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
           <View style={styles.headerContent}>
-            <Text style={[styles.title, isSleepTab && { color: '#FFF' }]}>Ai 故事机</Text>
+            <View style={styles.titleContainer}>
+              <Text style={[styles.title, isSleepTab && { color: '#FFF' }]}>
+                {deviceDetails?.deviceName || route.params?.deviceName || 'Ai 故事机'}
+              </Text>
+              <View style={[
+                styles.connectionStatus,
+                isConnecting ? styles.connecting :
+                (isConnected || isDeviceConnected) ? styles.connected : styles.disconnected
+              ]}>
+                <Text style={[
+                  styles.connectionText,
+                  isConnecting ? styles.connectingText :
+                  (isConnected || isDeviceConnected) ? styles.connectedText : styles.disconnectedText
+                ]}>
+                  {isConnecting ? '连接中...' :
+                   (isConnected || isDeviceConnected) ? '已连接' : '未连接'}
+                </Text>
+              </View>
+              {connectionError && (
+                <Text style={styles.errorText}>
+                  {connectionError}
+                </Text>
+              )}
+            </View>
             <View style={styles.headerButtons}>
-              <TouchableOpacity 
+              {isDevelopment && (
+                <TouchableOpacity
+                  style={styles.debugButton}
+                  onPress={() => setDebugPanelVisible(true)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={styles.debugButtonText}>调试</Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity
                 style={styles.closeButton}
                 onPress={handleClose}
                 activeOpacity={0.7}
               >
-                <Image 
+                <Image
                   source={isSleepTab ? require('../../img/light-close.png') : require('../../img/popup-close.png')}
                   style={styles.closeIcon}
                 />
@@ -138,6 +209,14 @@ const StoryMachinePanel = () => {
           </TouchableOpacity>
         </View>
       </View>
+
+      {/* 调试面板 */}
+      {isDevelopment && (
+        <DPDebugPanel
+          visible={debugPanelVisible}
+          onClose={() => setDebugPanelVisible(false)}
+        />
+      )}
     </View>
   );
 };
@@ -159,14 +238,69 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  titleContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+  },
   title: {
     fontSize: 18,
     fontWeight: '600',
     color: '#333333',
+    marginBottom: 4,
+  },
+  connectionStatus: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  connected: {
+    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+    borderColor: '#4CAF50',
+  },
+  connecting: {
+    backgroundColor: 'rgba(255, 152, 0, 0.1)',
+    borderColor: '#FF9800',
+  },
+  disconnected: {
+    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+    borderColor: '#F44336',
+  },
+  connectionText: {
+    fontSize: 10,
+    fontWeight: '500',
+  },
+  connectedText: {
+    color: '#4CAF50',
+  },
+  connectingText: {
+    color: '#FF9800',
+  },
+  disconnectedText: {
+    color: '#F44336',
+  },
+  errorText: {
+    fontSize: 10,
+    color: '#F44336',
+    marginTop: 2,
   },
   headerButtons: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
+  },
+  debugButton: {
+    backgroundColor: 'rgba(0, 122, 255, 0.1)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#007AFF',
+  },
+  debugButtonText: {
+    color: '#007AFF',
+    fontSize: 12,
+    fontWeight: '500',
   },
   closeButton: {
     width: 40,
@@ -229,6 +363,31 @@ const styles = StyleSheet.create({
   },
   inactiveTabLabelDark: {
     color: '#ffffff',
+  },
+  // 调试信息样式
+  debugInfo: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    marginTop: 10,
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  debugInfoDark: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderColor: '#333333',
+  },
+  debugTitle: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#333333',
+    marginBottom: 6,
+  },
+  debugText: {
+    fontSize: 11,
+    color: '#666666',
+    marginBottom: 2,
+    lineHeight: 16,
   },
 });
 

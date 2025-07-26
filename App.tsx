@@ -54,10 +54,13 @@ export default function App(props: any) {
             <Stack.Screen
               name="StoryMachinePanel"
               component={StoryMachinePanel}
+              initialParams={initialParams}
             />
             <Stack.Screen
               name="DollPanel"
               component={DollPanel}
+              initialParams={initialParams}
+
             />        
           </Stack.Navigator>
 

@@ -10,7 +10,13 @@ export type RootStackParamList = {
   Home: undefined;
   Creation: { source?: string;[key: string]: any } | undefined;
   AddDoll: undefined;
-  StoryMachinePanel: undefined;
+  StoryMachinePanel: {
+    deviceDetails?: any;
+    deviceId?: string;
+    deviceName?: string;
+    source?: string;
+    [key: string]: any;
+  } | undefined;
   DollPanel: {
     dollId?: string;
     source?: string;
