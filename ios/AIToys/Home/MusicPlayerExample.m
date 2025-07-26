@@ -132,11 +132,15 @@
 
 - (void)openRNTestPage {
     NSLog(@"🎵 [Native] 打开RN测试页面");
-    
+
     // 创建RN视图控制器，导航到测试页面
-    ReactViewController *rnVC = [ReactViewController viewControllerWithInitialRoute:@"MusicPlayerTest"];
+    NSDictionary *testParams = @{
+        @"source": @"music-player-test",
+        @"timestamp": @([[NSDate date] timeIntervalSince1970])
+    };
+    ReactViewController *rnVC = [ReactViewController viewControllerWithInitialRoute:@"MusicPlayerTest" params:testParams];
     rnVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    
+
     [self presentViewController:rnVC animated:YES completion:^{
         NSLog(@"🎵 [Native] RN测试页面已打开");
     }];

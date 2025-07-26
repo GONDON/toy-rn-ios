@@ -16,6 +16,16 @@
 		880173162E2A330D00D82D33 /* ReactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880173142E2A330D00D82D33 /* ReactViewController.m */; };
 		880173172E2A330D00D82D33 /* ReactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880173142E2A330D00D82D33 /* ReactViewController.m */; };
 		8801731A2E2A531E00D82D33 /* TuyaDeviceControlBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 880173192E2A531E00D82D33 /* TuyaDeviceControlBridge.m */; };
+		8885F89E2E33D3D800B9AEF5 /* DPBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8885F89D2E33D3D800B9AEF5 /* DPBridge.m */; };
+		88B44B7C2E327CD7006B1DD3 /* RNNavigationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B792E327CD7006B1DD3 /* RNNavigationExample.m */; };
+		88B44B7D2E327CD7006B1DD3 /* RNNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B7B2E327CD7006B1DD3 /* RNNavigationManager.m */; };
+		88B44B7E2E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B782E327CD7006B1DD3 /* MusicPlayerBridge.m */; };
+		88B44B7F2E327CD7006B1DD3 /* RNNavigationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B792E327CD7006B1DD3 /* RNNavigationExample.m */; };
+		88B44B802E327CD7006B1DD3 /* RNNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B7B2E327CD7006B1DD3 /* RNNavigationManager.m */; };
+		88B44B812E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B782E327CD7006B1DD3 /* MusicPlayerBridge.m */; };
+		88B44B822E327CD7006B1DD3 /* RNNavigationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B792E327CD7006B1DD3 /* RNNavigationExample.m */; };
+		88B44B832E327CD7006B1DD3 /* RNNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B7B2E327CD7006B1DD3 /* RNNavigationManager.m */; };
+		88B44B842E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B44B782E327CD7006B1DD3 /* MusicPlayerBridge.m */; };
 		A3E81D34F080E0F6069DDC1F /* libPods-AIToys.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD81051212684563E5D7D2BB /* libPods-AIToys.a */; };
 		DC1583E32E0533920097CF0A /* SetNewPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1583E22E0533920097CF0A /* SetNewPasswordViewController.xib */; };
 		DC1583E42E0533920097CF0A /* SetNewPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1583E12E0533920097CF0A /* SetNewPasswordViewController.m */; };
@@ -261,6 +271,13 @@
 		880173142E2A330D00D82D33 /* ReactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactViewController.m; sourceTree = "<group>"; };
 		880173182E2A531E00D82D33 /* TuyaDeviceControlBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuyaDeviceControlBridge.h; sourceTree = "<group>"; };
 		880173192E2A531E00D82D33 /* TuyaDeviceControlBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TuyaDeviceControlBridge.m; sourceTree = "<group>"; };
+		8885F89C2E33D3D800B9AEF5 /* DPBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPBridge.h; sourceTree = "<group>"; };
+		8885F89D2E33D3D800B9AEF5 /* DPBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPBridge.m; sourceTree = "<group>"; };
+		88B44B772E327CD7006B1DD3 /* MusicPlayerBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicPlayerBridge.h; sourceTree = "<group>"; };
+		88B44B782E327CD7006B1DD3 /* MusicPlayerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayerBridge.m; sourceTree = "<group>"; };
+		88B44B792E327CD7006B1DD3 /* RNNavigationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNNavigationExample.m; sourceTree = "<group>"; };
+		88B44B7A2E327CD7006B1DD3 /* RNNavigationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNNavigationManager.h; sourceTree = "<group>"; };
+		88B44B7B2E327CD7006B1DD3 /* RNNavigationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNNavigationManager.m; sourceTree = "<group>"; };
 		CD81051212684563E5D7D2BB /* libPods-AIToys.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AIToys.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1583E02E0533920097CF0A /* SetNewPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetNewPasswordViewController.h; sourceTree = "<group>"; };
 		DC1583E12E0533920097CF0A /* SetNewPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetNewPasswordViewController.m; sourceTree = "<group>"; };
@@ -688,6 +705,11 @@
 		88B2A39C2E29169D001EDC9D /* RN */ = {
 			isa = PBXGroup;
 			children = (
+				88B44B772E327CD7006B1DD3 /* MusicPlayerBridge.h */,
+				88B44B782E327CD7006B1DD3 /* MusicPlayerBridge.m */,
+				88B44B792E327CD7006B1DD3 /* RNNavigationExample.m */,
+				88B44B7A2E327CD7006B1DD3 /* RNNavigationManager.h */,
+				88B44B7B2E327CD7006B1DD3 /* RNNavigationManager.m */,
 				880173182E2A531E00D82D33 /* TuyaDeviceControlBridge.h */,
 				880173192E2A531E00D82D33 /* TuyaDeviceControlBridge.m */,
 				880173102E2A2F5800D82D33 /* RNNavigationTest.m */,
@@ -1141,6 +1163,8 @@
 		E49272022E01BD2F00DB6A2A = {
 			isa = PBXGroup;
 			children = (
+				8885F89C2E33D3D800B9AEF5 /* DPBridge.h */,
+				8885F89D2E33D3D800B9AEF5 /* DPBridge.m */,
 				E492720D2E01BD2F00DB6A2A /* AIToys */,
 				E49272292E01BD3200DB6A2A /* AIToysTests */,
 				E49272332E01BD3200DB6A2A /* AIToysUITests */,
@@ -1646,13 +1670,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AIToys/Pods-AIToys-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AIToys/Pods-AIToys-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1667,13 +1687,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AIToys/Pods-AIToys-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AIToys/Pods-AIToys-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1765,6 +1781,7 @@
 				E49272912E01C1C300DB6A2A /* NSDate+Extension.m in Sources */,
 				E492729C2E01C1C300DB6A2A /* UserInfo.m in Sources */,
 				DC56676E2E0CDE4E00379234 /* SwitchFamailyVC.m in Sources */,
+				8885F89E2E33D3D800B9AEF5 /* DPBridge.m in Sources */,
 				DC56676A2E0BF20600379234 /* HomeDeviceListVC.m in Sources */,
 				DC862AED2E095C2E001A4793 /* JoinFamailyVC.m in Sources */,
 				E49272162E01BD2F00DB6A2A /* ViewController.m in Sources */,
@@ -1843,6 +1860,9 @@
 				DC862AC42E093D83001A4793 /* FamailySettingVC.m in Sources */,
 				DCF8024F2E122A5800C72B4D /* DeviceAddCell.m in Sources */,
 				E49272DF2E030CF300DB6A2A /* HWTextCodeView.m in Sources */,
+				88B44B7F2E327CD7006B1DD3 /* RNNavigationExample.m in Sources */,
+				88B44B802E327CD7006B1DD3 /* RNNavigationManager.m in Sources */,
+				88B44B812E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */,
 				E46A38C42E08184E00C930D3 /* AddToysGuideVC.m in Sources */,
 				E49272212E01BD3100DB6A2A /* main.m in Sources */,
 				DC1AA07F2E04319200BADB1C /* UILabel+ClickIndex.m in Sources */,
@@ -1890,6 +1910,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B44B7C2E327CD7006B1DD3 /* RNNavigationExample.m in Sources */,
+				88B44B7D2E327CD7006B1DD3 /* RNNavigationManager.m in Sources */,
+				88B44B7E2E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */,
 				E492722B2E01BD3200DB6A2A /* AIToysTests.m in Sources */,
 				880173172E2A330D00D82D33 /* ReactViewController.m in Sources */,
 				880173132E2A2F5800D82D33 /* RNNavigationTest.m in Sources */,
@@ -1903,6 +1926,9 @@
 				E49272352E01BD3200DB6A2A /* AIToysUITests.m in Sources */,
 				880173112E2A2F5800D82D33 /* RNNavigationTest.m in Sources */,
 				880173152E2A330D00D82D33 /* ReactViewController.m in Sources */,
+				88B44B822E327CD7006B1DD3 /* RNNavigationExample.m in Sources */,
+				88B44B832E327CD7006B1DD3 /* RNNavigationManager.m in Sources */,
+				88B44B842E327CD7006B1DD3 /* MusicPlayerBridge.m in Sources */,
 				E49272372E01BD3200DB6A2A /* AIToysUITestsLaunchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2022,7 +2048,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -2081,7 +2110,10 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
